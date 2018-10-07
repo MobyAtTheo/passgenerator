@@ -2,6 +2,10 @@
 # Parking pass generation system and database
 
 ## Usage
+./passdata.py
+
+# default list the data contained
+
 
 ### List / passes in the database
 
