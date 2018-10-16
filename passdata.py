@@ -16,8 +16,13 @@ class passdata:
 
         self.owner_names = {10: "Bob Smith", 20: "Mike Smith", 30: "Alice Smith"}
 
+        self.ppass_to_add = [1111, 2222]
+
 
 def get_unit_data(unit_dict):
+    """Read the unit to passes dictionary and output the
+    passes assigned to a unit"""
+
     if unit_dict is None:
         unit_dict = {}
 
@@ -25,6 +30,7 @@ def get_unit_data(unit_dict):
 
 
 def get_ppass_used(ppass_used):
+    """read the used p pass list and output the used ppasses"""
     if ppass_used is None:
         ppass_used
 
@@ -49,9 +55,24 @@ def destroy_pass_from_pool():
     pass
 
 
-def add_new_passes_to_pool():
-    """add new passes to pool"""
-    pass
+def add_new_passes_to_pool(ppass_available=[], ppass_to_add=[]):
+    """add new passes to pool
+
+    input:
+    ppass_available list, current pass list
+    ppass_to_add, list, numbers to add to list
+
+    return: ppass_available list with additions
+    """
+    if ppass_to_add is None:
+        ppass_to_add = []
+
+    if ppass_available is None:
+        ppass_available = []
+
+    ppass_available = [ppass_available.append(passid) for passid in ppass_to_add]
+
+    return ppass_available
 
 
 def check_if_pass_exists():
@@ -148,3 +169,9 @@ if __name__ == "__main__":
 
     print("=" * 90)
     list_pass_assignments(pd.owner_names, pd.unit_dict)
+
+    # add new pass example
+    ppass_available = add_new_passes_to_pool(
+        ppass_available=pd.ppass_available, ppass_to_add=pd.ppass_to_add
+    )
+    print("ppass_available: {}".format(pd.ppass_available))
