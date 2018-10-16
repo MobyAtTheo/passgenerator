@@ -8,7 +8,7 @@ class passdata:
 
         self.x = 100
 
-        self.ppass_available = [100, 200, 300]
+        self.ppass_available = [1000, 2000, 3000]
 
         self.ppass_used = [500]
 
@@ -37,6 +37,55 @@ def update_unit_dict(unit_dict, unit_number, updated_pass):
     unit_dict[unit_number] = updated_pass
 
     return unit_dict
+
+
+def reclaim_pass_from_pool():
+    """reclaim the pass from the pool"""
+    pass
+
+
+def destroy_pass_from_pool():
+    """permanently remove passes from pool"""
+    pass
+
+
+def add_new_passes_to_pool():
+    """add new passes to pool"""
+    pass
+
+
+def check_if_pass_exists():
+    """check the assinged pool(s) to see if the pass exists
+
+    returns bool
+    """
+    pass
+
+
+def populate_and_dedup_pass(ppass_used, unit_dict, ppass_available):
+    """populate the in use passes and de-dupe
+
+    opportunity for set use here"""
+    # TODO:
+
+    if ppass_available is None:
+        ppass_available = []
+    if ppass_used is None:
+        ppass_used = []
+    if unit_dict is None:
+        unit_dict = []
+
+    comparelist = []
+    comparetuple = ()
+    uk = [i for i in unit_dict.keys() if type(unit_dict[i]) is not type(comparelist)]
+    # z = [i for i in unit_dict[uk]]
+    # z = [i for i in uk for q in unit_dict[i] if i is not None]
+
+    z = [i for i in unit_dict.keys() if unit_dict[i] is not None]  # works gets keys
+
+    print("[*] zee printing")
+    print("[*] z: {}".format(z))
+    pass
 
 
 def assign_pass_from_pool(ppass_available):
@@ -86,6 +135,8 @@ def list_pass_assignments(owner_names, unit_dict):
 if __name__ == "__main__":
 
     pd = passdata()
+
+    populate_and_dedup_pass(pd.ppass_used, pd.unit_dict, pd.ppass_available)
 
     update_unit_dict(pd.unit_dict, 10, [90, 92])
 
